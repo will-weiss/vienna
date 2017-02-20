@@ -10,7 +10,7 @@ NLP - Natural Language Programming
 git clone git@github.com:will-weiss/vienna.git --recursive
 
 # OSX
-brew install bats
+./install-osx.bash
 ```
 
 # Test
