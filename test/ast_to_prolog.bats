@@ -4,8 +4,8 @@ load './test_helper/bats-support/load'
 load './test_helper/bats-assert/load'
 load './test_helper/bats-file/load'
 
-load '../src/interpreter'
+load '../src/ast_to_prolog'
 
-@test "does something" {
-  skip "Not sure how the interpreter should work"
+@test "ast_to_prolog does something" {
+  skip "Not sure how the ast_to_prolog should work"
 }

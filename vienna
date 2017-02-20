@@ -4,11 +4,13 @@ source src/parse_english.bash
 source src/conll_to_json.bash
 source src/group_sentences.bash
 source src/sentences_to_ast.bash
-source src/interpreter.bash
+source src/ast_to_prolog.bash
+source src/prolog_interpreter.bash
 
 cat "$1" \
   | parse_english \
   | conll_to_json \
   | group_sentences \
   | sentences_to_ast \
-  | interpreter
+  | ast_to_prolog \
+  | prolog_interpreter
