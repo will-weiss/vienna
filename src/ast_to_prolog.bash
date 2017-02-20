@@ -1,3 +1,3 @@
 ast_to_prolog() {
-  echo 'writeln("Hello World").'
+  echo "format('~w', [\"Hello World\"])."
 }
