@@ -1,3 +1,5 @@
+parse_english() {
+  read -r -d '' DEMO_SCRIPT_CONTENTS <<'EOF'
 #!/bin/bash
 # Copyright 2016 Google Inc. All Rights Reserved.
 #
@@ -48,3 +50,10 @@ $PARSER_EVAL \
   --model_path=$MODEL_DIR/parser-params \
   --slim_model \
   --batch_size=1024
+EOF
+
+  docker run \
+    --rm -i brianlow/syntaxnet \
+    sh -c "echo '${DEMO_SCRIPT_CONTENTS}' > syntaxnet/demo.sh && syntaxnet/demo.sh" \
+    2> /dev/null
+}

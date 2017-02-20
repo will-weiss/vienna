@@ -1,17 +1,7 @@
-#! /usr/bin/env bash -euo pipefail
+#! /usr/bin/env bash
 
-modified_demo_script_contents=$(cat modified_demo.sh)
+source src/parse_english.bash
+source src/conll_to_json.bash
+source src/interpreter.bash
 
-parse_with_syntax_net() {
-  docker run --rm -i brianlow/syntaxnet sh -c "echo '$modified_demo_script_contents' > syntaxnet/demo.sh && syntaxnet/demo.sh" 2> /dev/null
-}
-
-interpret() {
-  cat
-}
-
-vienna() {
-  cat "$1" | parse_with_syntax_net | interpret
-}
-
-vienna $@
+cat "$1" | parse_english | conll_to_json | interpreter
