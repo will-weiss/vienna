@@ -1,5 +1,5 @@
-sudo: true
-dist: trusty
+services:
+  - docker
 
 before_install:
   - sudo add-apt-repository ppa:duggan/bats --yes
@@ -13,5 +13,6 @@ notifications:
   email:
     recipients:
       - will.weiss1230@gmail.com
+      - conorwdowling@gmail.com
     on_success: always
     on_failure: always
