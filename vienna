@@ -11,6 +11,6 @@ cat "$1" \
   | parse_english \
   | conll_to_json \
   | group_sentences \
-  # | sentences_to_ast \
-  # | ast_to_prolog \
-  # | prolog_interpreter
+  | sentences_to_ast \
+  | ast_to_prolog \
+  | prolog_interpreter

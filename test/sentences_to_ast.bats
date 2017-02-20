@@ -14,69 +14,69 @@ load '../src/sentences_to_ast'
   run test_sentences_to_ast
 
   assert_output '{
-    "FORM": "print",
-    "XPOSTAG": "VB",
-    "DEPREL": "ROOT",
-    "children": [
-      {
-        "FORM": "run",
-        "XPOSTAG": "VBN",
-        "DEPREL": "advcl",
-        "children": [
-          {
-            "FORM": "When",
-            "XPOSTAG": "WRB",
-            "DEPREL": "advmod",
-            "children": []
-          }
-        ]
-      },
-      {
-        "FORM": ",",
-        "XPOSTAG": ",",
-        "DEPREL": "punct",
-        "children": []
-      },
-      {
-        "FORM": "message",
-        "XPOSTAG": "NN",
-        "DEPREL": "dobj",
-        "children": [
-          {
-            "FORM": "the",
-            "XPOSTAG": "DT",
-            "DEPREL": "det",
-            "children": []
-          }
-        ]
-      },
-      {
-        "FORM": "to",
-        "XPOSTAG": "IN",
-        "DEPREL": "prep",
-        "children": [
-          {
-            "FORM": "console",
-            "XPOSTAG": "NN",
-            "DEPREL": "pobj",
-            "children": [
-              {
-                "FORM": "the",
-                "XPOSTAG": "DT",
-                "DEPREL": "det",
-                "children": []
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "FORM": ".",
-        "XPOSTAG": ".",
-        "DEPREL": "punct",
-        "children": []
-      }
-    ]
-  }'
+  "FORM": "print",
+  "XPOSTAG": "VB",
+  "DEPREL": "ROOT",
+  "children": [
+    {
+      "FORM": "run",
+      "XPOSTAG": "VBN",
+      "DEPREL": "advcl",
+      "children": [
+        {
+          "FORM": "When",
+          "XPOSTAG": "WRB",
+          "DEPREL": "advmod",
+          "children": []
+        }
+      ]
+    },
+    {
+      "FORM": ",",
+      "XPOSTAG": ",",
+      "DEPREL": "punct",
+      "children": []
+    },
+    {
+      "FORM": "message",
+      "XPOSTAG": "NN",
+      "DEPREL": "dobj",
+      "children": [
+        {
+          "FORM": "the",
+          "XPOSTAG": "DT",
+          "DEPREL": "det",
+          "children": []
+        }
+      ]
+    },
+    {
+      "FORM": "to",
+      "XPOSTAG": "IN",
+      "DEPREL": "prep",
+      "children": [
+        {
+          "FORM": "console",
+          "XPOSTAG": "NN",
+          "DEPREL": "pobj",
+          "children": [
+            {
+              "FORM": "the",
+              "XPOSTAG": "DT",
+              "DEPREL": "det",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "FORM": ".",
+      "XPOSTAG": ".",
+      "DEPREL": "punct",
+      "children": []
+    }
+  ]
+}'
 }
 
