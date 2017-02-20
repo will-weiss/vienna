@@ -2,6 +2,7 @@
 
 source src/parse_english.bash
 source src/conll_to_json.bash
+source src/json_to_ast.bash
 source src/interpreter.bash
 
-cat "$1" | parse_english | conll_to_json | interpreter
+cat "$1" | parse_english | conll_to_json | json_to_ast | interpreter
