@@ -4,7 +4,8 @@ source src/parse_english.bash
 source src/conll_words_to_json_words.bash
 source src/group_words_of_sentences.bash
 source src/sentences_to_english_syntax_trees.bash
-source src/ast_to_prolog.bash
+source src/english_syntax_trees_to_prolog_ast.bash
+source src/prolog_ast_to_prolog_code.bash
 source src/prolog_interpreter.bash
 
 cat "$1" \
@@ -12,5 +13,6 @@ cat "$1" \
   | conll_words_to_json_words \
   | group_words_of_sentences \
   | sentences_to_english_syntax_trees \
-  | ast_to_prolog \
+  | english_syntax_trees_to_prolog_ast \
+  | prolog_ast_to_prolog_code \
   | prolog_interpreter

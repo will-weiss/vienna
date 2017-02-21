@@ -1,4 +1,4 @@
-ast_to_prolog() {
+prolog_ast_to_prolog_code() {
   # Pass for now
   while read line; do
     :
