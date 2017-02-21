@@ -6,7 +6,7 @@ load './test_helper/bats-file/load'
 
 load '../src/sentences_to_ast'
 
-@test "sentences_to_ast does something" {
+@test "sentences_to_ast converts an array of records containing information about words in a sentence to a syntax tree for that sentence" {
 
   echo_tokens() {
     echo '{ "ID": 1, "FORM": "When", "LEMMA": "_", "UPOSTAG": "ADV", "XPOSTAG": "WRB", "FEATS": "_", "HEAD": 2, "DEPREL": "advmod", "DEPS": "_", "MISC": "_" }'
@@ -27,16 +27,16 @@ load '../src/sentences_to_ast'
 
   echo_expected_ast() {
     echo '
-      { "FORM": "print", "XPOSTAG": "VB", "DEPREL": "ROOT", "children": [
-        { "FORM": "run", "XPOSTAG": "VBN", "DEPREL": "advcl", "children": [
-          { "FORM": "When", "XPOSTAG": "WRB", "DEPREL": "advmod", "children": [] }] },
-        { "FORM": ",", "XPOSTAG": ",", "DEPREL": "punct", "children": [] },
-        { "FORM": "message", "XPOSTAG": "NN", "DEPREL": "dobj", "children": [
-          { "FORM": "the", "XPOSTAG": "DT", "DEPREL": "det", "children": [] }] },
-        { "FORM": "to", "XPOSTAG": "IN", "DEPREL": "prep", "children": [
-          { "FORM": "console", "XPOSTAG": "NN", "DEPREL": "pobj", "children": [
-            { "FORM": "the", "XPOSTAG": "DT", "DEPREL": "det", "children": [] }] }] },
-        { "FORM": ".", "XPOSTAG": ".", "DEPREL": "punct", "children": [] }] }
+      { "FORM": "print", "UPOSTAG": "VERB", "XPOSTAG": "VB", "DEPREL": "ROOT", "children": [
+        { "FORM": "run", "UPOSTAG": "VERB", "XPOSTAG": "VBN", "DEPREL": "advcl", "children": [
+          { "FORM": "When", "UPOSTAG": "ADV", "XPOSTAG": "WRB", "DEPREL": "advmod", "children": [] }] },
+        { "FORM": ",", "UPOSTAG": ".", "XPOSTAG": ",", "DEPREL": "punct", "children": [] },
+        { "FORM": "message", "UPOSTAG": "NOUN", "XPOSTAG": "NN", "DEPREL": "dobj", "children": [
+          { "FORM": "the", "UPOSTAG": "DET", "XPOSTAG": "DT", "DEPREL": "det", "children": [] }] },
+        { "FORM": "to", "UPOSTAG": "ADP", "XPOSTAG": "IN", "DEPREL": "prep", "children": [
+          { "FORM": "console", "UPOSTAG": "NOUN", "XPOSTAG": "NN", "DEPREL": "pobj", "children": [
+            { "FORM": "the", "UPOSTAG": "DET", "XPOSTAG": "DT", "DEPREL": "det", "children": [] }] }] },
+        { "FORM": ".", "UPOSTAG": ".", "XPOSTAG": ".", "DEPREL": "punct", "children": [] }] }
     '
   }
 
