@@ -1,4 +1,4 @@
-group_sentences() {
+group_words_of_sentences() {
   awk '
     /^{.*}$/ {
       sentence = (sentence == "") ? ("[" $0) : (sentence "," $0)

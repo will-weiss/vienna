@@ -2,7 +2,7 @@
 
 source src/parse_english.bash
 source src/conll_words_to_json_words.bash
-source src/group_sentences.bash
+source src/group_words_of_sentences.bash
 source src/sentences_to_ast.bash
 source src/ast_to_prolog.bash
 source src/prolog_interpreter.bash
@@ -10,7 +10,7 @@ source src/prolog_interpreter.bash
 cat "$1" \
   | parse_english \
   | conll_words_to_json_words \
-  | group_sentences \
+  | group_words_of_sentences \
   | sentences_to_ast \
   | ast_to_prolog \
   | prolog_interpreter
