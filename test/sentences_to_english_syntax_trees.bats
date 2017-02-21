@@ -4,9 +4,9 @@ load './test_helper/bats-support/load'
 load './test_helper/bats-assert/load'
 load './test_helper/bats-file/load'
 
-load '../src/sentences_to_ast'
+load '../src/sentences_to_english_syntax_trees'
 
-@test "sentences_to_ast converts an array of records containing information about words in a sentence to a syntax tree for that sentence" {
+@test "sentences_to_english_syntax_trees converts arrays of JSON records containing information about words in a sentence to syntax trees representing those english sentences." {
 
   echo_tokens() {
     echo '{ "ID": 1, "FORM": "When", "LEMMA": "_", "UPOSTAG": "ADV", "XPOSTAG": "WRB", "FEATS": "_", "HEAD": 2, "DEPREL": "advmod", "DEPS": "_", "MISC": "_" }'
@@ -22,7 +22,7 @@ load '../src/sentences_to_ast'
   }
 
   get_ast_of_tokens() {
-    echo_tokens | jq --compact-output --slurp '.' | sentences_to_ast
+    echo_tokens | jq --compact-output --slurp '.' | sentences_to_english_syntax_trees
   }
 
   echo_expected_ast() {
@@ -44,11 +44,11 @@ load '../src/sentences_to_ast'
     jq --sort-keys --compact-output '.'
   }
 
-  test_sentences_to_ast() {
+  test_sentences_to_english_syntax_trees() {
     diff <(get_ast_of_tokens | stable_json) <(echo_expected_ast | stable_json)
   }
 
-  run test_sentences_to_ast
+  run test_sentences_to_english_syntax_trees
 
   assert_output ''
 }

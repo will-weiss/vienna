@@ -1,4 +1,4 @@
-conll_to_json() {
+conll_words_to_json_words() {
   awk '
     /^$/ {
       print ""
