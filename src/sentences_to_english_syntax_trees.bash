@@ -1,4 +1,4 @@
-sentences_to_ast() {
+sentences_to_english_syntax_trees() {
   node -e '
     require("readline")
       .createInterface({ input: process.stdin })
