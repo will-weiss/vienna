@@ -12,6 +12,10 @@ which brew >/dev/null || {
   exit 1
 }
 
+which jq >/dev/null || {
+  brew install jq
+}
+
 which bats >/dev/null || {
   brew install bats
 }
