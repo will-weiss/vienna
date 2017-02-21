@@ -1,25 +1,27 @@
 sentences_to_ast() {
   node -e '
-    const lines = require("readline").createInterface({ input: process.stdin })
+    require("readline")
+      .createInterface({ input: process.stdin })
+      .on("line", printSyntaxTreeOfLine)
 
-    function getAstOfLine(tokensOfLine) {
-      const root = tokensOfLine.find(token => token.HEAD === 0)
-
-      function findChildren({ ID, FORM, XPOSTAG, DEPREL }) {
-        const children = tokensOfLine
-          .filter(otherToken => otherToken.HEAD === ID)
-          .map(findChildren)
-        
-        return { FORM, XPOSTAG, DEPREL, children }
-      }
-
-      return findChildren(root);
+    function printSyntaxTreeOfLine(line) {
+      const wordsOfSentence = JSON.parse(line)
+      const englishSyntaxTreeOfSentence = getEnglishSyntaxTreeOfSentence(wordsOfSentence)
+      console.log(JSON.stringify(englishSyntaxTreeOfSentence))
     }
 
-    lines.on("line", line => {
-      const tokensOfLine = JSON.parse(line)
-      const astOfLine = getAstOfLine(tokensOfLine)
-      console.log(JSON.stringify(astOfLine))
-    })
+    function getEnglishSyntaxTreeOfSentence(wordsOfSentence) {
+      const childrenOfWord = ID =>
+        wordsOfSentence
+          .filter(wordOfSentence => wordOfSentence.HEAD === ID)
+          .map(formSyntaxTreeOfWord)
+
+      const formSyntaxTreeOfWord = ({ ID, FORM, UPOSTAG, XPOSTAG, DEPREL }) =>
+        ({ FORM, UPOSTAG, XPOSTAG, DEPREL, children: childrenOfWord(ID) })
+
+      const rootWord = wordsOfSentence.find(word => word.DEPREL === "ROOT")
+
+      return formSyntaxTreeOfWord(rootWord);
+    }
   '
 }
