@@ -7,6 +7,9 @@ before_install:
   - sudo apt-get install -qq bats
   - sudo apt-get install -y swi-prolog
   - sudo apt-get install jq
+  - . $HOME/.nvm/nvm.sh
+  - nvm install 6.9.1
+  - nvm use 6.9.1
 
 script:
   - bats test
