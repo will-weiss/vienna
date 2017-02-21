@@ -4,14 +4,14 @@ load './test_helper/bats-support/load'
 load './test_helper/bats-assert/load'
 load './test_helper/bats-file/load'
 
-load '../src/parse_english'
+load '../src/parse_english_syntax_trees/parse_english_to_conll'
 
-@test "parse_english parses standard input into a conll representation of the parsed syntax" {
-  test_parse_english() {
-    cat $BATS_TEST_DIRNAME/hello_world.vn | parse_english
+@test "parse_english_to_conll parses standard input into a conll representation of the parsed syntax" {
+  test_parse_english_to_conll() {
+    cat $BATS_TEST_DIRNAME/hello_world.vn | parse_english_to_conll
   }
 
-  run test_parse_english
+  run test_parse_english_to_conll
 
   assert_line --index 0 "1	When	_	ADV	WRB	_	2	advmod	_	_"
   assert_line --index 1 "2	run	_	VERB	VBN	_	4	advcl	_	_"

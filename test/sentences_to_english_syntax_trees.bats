@@ -4,7 +4,7 @@ load './test_helper/bats-support/load'
 load './test_helper/bats-assert/load'
 load './test_helper/bats-file/load'
 
-load '../src/sentences_to_english_syntax_trees'
+load '../src/parse_english_syntax_trees/sentences_to_english_syntax_trees'
 
 @test "sentences_to_english_syntax_trees converts arrays of JSON records containing information about words in a sentence to syntax trees representing those english sentences." {
 

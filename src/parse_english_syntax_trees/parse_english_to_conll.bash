@@ -1,4 +1,4 @@
-parse_english() {
+parse_english_to_conll() {
   read -r -d '' DEMO_SCRIPT_CONTENTS <<'EOF'
 #!/bin/bash
 # Copyright 2016 Google Inc. All Rights Reserved.
