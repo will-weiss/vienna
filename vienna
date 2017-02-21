@@ -1,18 +1,12 @@
 #! /usr/bin/env bash
 
-source src/parse_english.bash
-source src/conll_words_to_json_words.bash
-source src/group_words_of_sentences.bash
-source src/sentences_to_english_syntax_trees.bash
+source src/parse_english_syntax_trees/parse_english_syntax_trees.bash
 source src/english_syntax_trees_to_prolog_ast.bash
 source src/prolog_ast_to_prolog_code.bash
 source src/prolog_interpreter.bash
 
 cat "$1" \
-  | parse_english \
-  | conll_words_to_json_words \
-  | group_words_of_sentences \
-  | sentences_to_english_syntax_trees \
+  | parse_english_syntax_trees \
   | english_syntax_trees_to_prolog_ast \
   | prolog_ast_to_prolog_code \
   | prolog_interpreter

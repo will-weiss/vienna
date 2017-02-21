@@ -4,7 +4,7 @@ load './test_helper/bats-support/load'
 load './test_helper/bats-assert/load'
 load './test_helper/bats-file/load'
 
-load '../src/conll_words_to_json_words'
+load '../src/parse_english_syntax_trees/conll_words_to_json_words'
 
 @test "conll_words_to_json_words parses words represented as lines in conll format received on stdin and echos a JSON record for each word. When an empty line is received, an empty line is output." {
 

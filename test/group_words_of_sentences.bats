@@ -4,7 +4,7 @@ load './test_helper/bats-support/load'
 load './test_helper/bats-assert/load'
 load './test_helper/bats-file/load'
 
-load '../src/group_words_of_sentences'
+load '../src/parse_english_syntax_trees/group_words_of_sentences'
 
 @test "group_words_of_sentences groups JSON objects representing words of sentences into JSON arrays. It interprets empty lines as sentence breaks and outputs one array per sentence." {
 
