@@ -3,71 +3,17 @@ sentences_to_ast() {
     const lines = require("readline").createInterface({ input: process.stdin })
 
     function getAstOfLine(tokensOfLine) {
-      return {
-        "FORM": "print",
-        "XPOSTAG": "VB",
-        "DEPREL": "ROOT",
-        "children": [
-          {
-            "FORM": "run",
-            "XPOSTAG": "VBN",
-            "DEPREL": "advcl",
-            "children": [
-              {
-                "FORM": "When",
-                "XPOSTAG": "WRB",
-                "DEPREL": "advmod",
-                "children": []
-              }
-            ]
-          },
-          {
-            "FORM": ",",
-            "XPOSTAG": ",",
-            "DEPREL": "punct",
-            "children": []
-          },
-          {
-            "FORM": "message",
-            "XPOSTAG": "NN",
-            "DEPREL": "dobj",
-            "children": [
-              {
-                "FORM": "the",
-                "XPOSTAG": "DT",
-                "DEPREL": "det",
-                "children": []
-              }
-            ]
-          },
-          {
-            "FORM": "to",
-            "XPOSTAG": "IN",
-            "DEPREL": "prep",
-            "children": [
-              {
-                "FORM": "console",
-                "XPOSTAG": "NN",
-                "DEPREL": "pobj",
-                "children": [
-                  {
-                    "FORM": "the",
-                    "XPOSTAG": "DT",
-                    "DEPREL": "det",
-                    "children": []
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "FORM": ".",
-            "XPOSTAG": ".",
-            "DEPREL": "punct",
-            "children": []
-          }
-        ]
+      const root = tokensOfLine.find(token => token.HEAD === 0)
+
+      function findChildren({ ID, FORM, XPOSTAG, DEPREL }) {
+        const children = tokensOfLine
+          .filter(otherToken => otherToken.HEAD === ID)
+          .map(findChildren)
+        
+        return { FORM, XPOSTAG, DEPREL, children }
       }
+
+      return findChildren(root);
     }
 
     lines.on("line", line => {
