@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 source src/parse_english.bash
-source src/conll_to_json.bash
+source src/conll_words_to_json_words.bash
 source src/group_sentences.bash
 source src/sentences_to_ast.bash
 source src/ast_to_prolog.bash
@@ -9,7 +9,7 @@ source src/prolog_interpreter.bash
 
 cat "$1" \
   | parse_english \
-  | conll_to_json \
+  | conll_words_to_json_words \
   | group_sentences \
   | sentences_to_ast \
   | ast_to_prolog \

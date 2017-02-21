@@ -4,11 +4,11 @@ load './test_helper/bats-support/load'
 load './test_helper/bats-assert/load'
 load './test_helper/bats-file/load'
 
-load '../src/conll_to_json'
+load '../src/conll_words_to_json_words'
 
-@test "conll_to_json parses conll received on stdin and echos a JSON record for each non-empty line" {
+@test "conll_words_to_json_words parses words represented as lines in conll format received on stdin and echos a JSON record for each word. When an empty line is received, an empty line is output." {
 
-  test_conll_to_json() {
+  test_conll_words_to_json_words() {
     {
       echo "1	When	_	ADV	WRB	_	2	advmod	_	_"
       echo "2	run	_	VERB	VBN	_	4	advcl	_	_"
@@ -23,10 +23,10 @@ load '../src/conll_to_json'
       echo "11	console	_	NOUN	NN	_	9	pobj	_	_"
       echo "12	.	_	.	.	_	4	punct	_	_"
       echo ""
-    } | conll_to_json
+    } | conll_words_to_json_words
   }
 
-  run test_conll_to_json
+  run test_conll_words_to_json_words
 
   assert_line --index 0 '{ "ID": 1, "FORM": "When", "LEMMA": "_", "UPOSTAG": "ADV", "XPOSTAG": "WRB", "FEATS": "_", "HEAD": 2, "DEPREL": "advmod", "DEPS": "_", "MISC": "_" }'
   assert_line --index 1 '{ "ID": 2, "FORM": "run", "LEMMA": "_", "UPOSTAG": "VERB", "XPOSTAG": "VBN", "FEATS": "_", "HEAD": 4, "DEPREL": "advcl", "DEPS": "_", "MISC": "_" }'
